@@ -1,0 +1,9 @@
+{
+  "name": "Sample",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "description": "Sample Chrome Extension",
+  "action": {
+    "default_popup": "./dist/index.html"
+  }
+}
