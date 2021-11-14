@@ -1,7 +1,7 @@
 import React from 'react'
-export function polling() {
-  // console.log("polling");
+const color = '#3aa757';
 
-}
-
-polling();
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.storage.sync.set({ color });
+  console.log('Default background color set to %cgreen', `color: ${color}`);
+});

@@ -1,1 +1,1 @@
-(()=>{"use strict"})();
+(()=>{"use strict";var o="#3aa757";chrome.runtime.onInstalled.addListener((function(){chrome.storage.sync.set({color:o}),console.log("Default background color set to %cgreen","color: "+o)}))})();
