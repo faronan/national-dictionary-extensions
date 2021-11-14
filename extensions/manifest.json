@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "manifest_version": 3,
   "description": "Sample Chrome Extension",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage"],
   "action": {
     "default_popup": "./dist/index.html"
   }
