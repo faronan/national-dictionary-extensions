@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import type { NextPage } from 'next'
+import { changeButtonColor } from './lib/changeButtonColor'
 
 const Popup: NextPage = () => {
   const buttonStyle = {
@@ -23,9 +24,4 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-const changeColor = document.getElementById("changeColor");
-chrome.storage.sync.get("color", ({ color }) => {
-  if(changeColor){
-    changeColor.style.backgroundColor = color;
-  }
-});
+changeButtonColor()
