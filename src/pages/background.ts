@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 const color = '#3aa757';
 
 chrome.runtime.onInstalled.addListener(() => {
