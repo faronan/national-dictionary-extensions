@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import type { NextPage } from 'next'
-import { changeButtonColor } from './lib/changeButtonColor'
+import { changeButtonColor,changeText } from './lib/changeButtonColor'
 
 const Popup: NextPage = () => {
   const buttonStyle = {
@@ -12,6 +12,7 @@ const Popup: NextPage = () => {
     <div>
       <main style={{ minWidth: "700px" }}>
         <button id="changeColor" style={buttonStyle}></button>
+        <text id="text">hoge</text>
       </main>
     </div>
   )
@@ -25,3 +26,4 @@ ReactDOM.render(
 );
 
 changeButtonColor()
+changeText()

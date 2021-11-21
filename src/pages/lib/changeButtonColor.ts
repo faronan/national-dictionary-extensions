@@ -5,4 +5,21 @@ export const changeButtonColor = () => {
       changeColor.style.backgroundColor = color;
     }
   });
+
+  const text = document.getElementById("text");
+  chrome.storage.local.get("selectionString", ({ selectionString }) => {
+    if(text){
+      text.innerText = selectionString
+    }
+    changeColor!.addEventListener('click', ()=>alert(selectionString));
+  });
+}
+
+export const changeText = () => {
+  const text = document.getElementById("text");
+  chrome.storage.local.get("selectionString", ({ selectionString }) => {
+    if(text){
+      text.innerText = selectionString
+    }
+  });
 }
