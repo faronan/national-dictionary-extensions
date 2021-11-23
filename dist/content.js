@@ -1,1 +1,1 @@
-(()=>{"use strict";chrome.runtime.onMessage.addListener((function(o,e,n){o.color?(console.log("Receive color = "+o.color),document.body.style.backgroundColor=o.color,n("Change color to "+o.color)):n("Color message is none.")})),document.addEventListener("selectionchange",(function(){var o=document.getSelection();if(o){var e=o.toString();chrome.storage.local.set({selectionString:e})}}))})();
+(()=>{"use strict";document.addEventListener("selectionchange",(function(){var e=document.getSelection();if(e){var t=e.toString();chrome.storage.local.set({selectionString:t})}}))})();
