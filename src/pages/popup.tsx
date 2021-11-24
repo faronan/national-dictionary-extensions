@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import type { NextPage } from 'next';
+import { useForm } from 'react-hook-form';
 
 const Popup: NextPage = () => {
   const [storageValue, setStorageValue] = useState('');
-  const [input, setInput] = useState('');
   const [result, setResult] = useState('');
 
-  const buttonStyle = {
-    height: '30px',
-    width: '50px',
+  type FormData = {
+    word: string;
   };
-  const searchDictionary = async () => {
-    const url = `https://www.weblio.jp/content/${input}`;
+  const { register, setValue, handleSubmit } = useForm<FormData>();
+  const onSubmit = handleSubmit(async (data) => {
+    const result = await searchDictionary(data['word']);
+    setResult(result);
+  });
+
+  const searchDictionary = async (word: string) => {
+    const url = `https://www.weblio.jp/content/${word}`;
     const kijiElements = await fetch(url)
       .then((response) => response.text())
       .then((text) => new DOMParser().parseFromString(text, 'text/html'))
@@ -20,27 +25,27 @@ const Popup: NextPage = () => {
 
     if (kijiElements.length != 0) {
       const children = kijiElements[0].children as HTMLCollectionOf<HTMLElement>;
-      setResult(children[1].innerText);
+      return children[1].innerText;
     } else {
-      setResult(`用語解説で「${input}」に一致する見出し語は見つかりませんでした。`);
+      return `用語解説で「${word}」に一致する見出し語は見つかりませんでした。`;
     }
   };
 
+  //ローカルストレージは常に監視して、変更があった時だけuseEffectを発火させる
   chrome.storage.local.get('selectionString', ({ selectionString }) => {
     setStorageValue(selectionString);
   });
   useEffect(() => {
-    setInput(storageValue);
+    setValue('word', storageValue);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [storageValue]);
 
   return (
     <main style={{ minWidth: '700px' }}>
-      <div>
-        <input type="text" value={input} onChange={(e) => setInput(e.target.value)}></input>
-        <button style={buttonStyle} onClick={searchDictionary}>
-          検索
-        </button>
-      </div>
+      <form onSubmit={onSubmit}>
+        <input {...register('word')} />
+        <button type="submit">検索</button>
+      </form>
       <text>{result}</text>
     </main>
   );
