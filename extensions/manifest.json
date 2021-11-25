@@ -1,8 +1,8 @@
 {
-  "name": "Sample",
+  "name": "National dictionary",
   "version": "1.0.0",
   "manifest_version": 3,
-  "description": "Sample Chrome Extension",
+  "description": "Look up the National dictionary",
   "background": {
     "service_worker": "background.js"
   },
