@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import type { NextPage } from 'next';
 import { useForm } from 'react-hook-form';
+import { useBudouX } from '../hooks/useBudouX';
 
 const Popup: NextPage = () => {
   const [storageValue, setStorageValue] = useState('');
@@ -15,6 +16,8 @@ const Popup: NextPage = () => {
     const result = await searchDictionary(data['word']);
     setResult(result);
   });
+
+  const { parse } = useBudouX();
 
   const searchDictionary = async (word: string) => {
     const url = `https://www.weblio.jp/content/${word}`;
@@ -46,7 +49,7 @@ const Popup: NextPage = () => {
         <input {...register('word')} />
         <button type="submit">検索</button>
       </form>
-      <text>{result}</text>
+      <text>{parse(result)}</text>
     </main>
   );
 };
