@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import type { NextPage } from 'next';
+import { ChakraProvider } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import { useBudouX } from '../hooks/useBudouX';
 
@@ -56,7 +57,9 @@ const Popup: NextPage = () => {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Popup />
+    <ChakraProvider>
+      <Popup />
+    </ChakraProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
