@@ -1,5 +1,3 @@
-import React from 'react';
-
 document.addEventListener('selectionchange', () => {
   const selection = document.getSelection();
   if (!selection) return;
@@ -7,3 +5,5 @@ document.addEventListener('selectionchange', () => {
   const selectionString = selection.toString();
   chrome.storage.local.set({ selectionString });
 });
+
+export {};
