@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import type { NextPage } from 'next';
+import { ChakraProvider } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import { useBudouX } from '../hooks/useBudouX';
+import { Box, FormControl, Input, IconButton, Text } from '@chakra-ui/react';
+import { SearchIcon } from '@chakra-ui/icons';
 
 const Popup: NextPage = () => {
   const [storageValue, setStorageValue] = useState('');
@@ -44,19 +47,36 @@ const Popup: NextPage = () => {
   }, [storageValue]);
 
   return (
-    <main style={{ minWidth: '700px' }}>
+    <Box w={400} p={4}>
       <form onSubmit={onSubmit}>
-        <input {...register('word')} />
-        <button type="submit">検索</button>
+        <FormControl>
+          <Box display="flex" alignItems="baseline">
+            <Input size="xs" w={150} {...register('word')} />
+            <IconButton
+              size="xs"
+              ml="2"
+              colorScheme="blue"
+              aria-label="Search database"
+              icon={<SearchIcon />}
+              type="submit"
+            >
+              検索
+            </IconButton>
+          </Box>
+        </FormControl>
       </form>
-      <text>{parse(result)}</text>
-    </main>
+      <Box mt="2">
+        <Text color="gray.500">{parse(result)}</Text>
+      </Box>
+    </Box>
   );
 };
 
 ReactDOM.render(
   <React.StrictMode>
-    <Popup />
+    <ChakraProvider>
+      <Popup />
+    </ChakraProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
