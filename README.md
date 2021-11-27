@@ -11,6 +11,7 @@
 
 ## Requirement
 - Node.js
+  - Next.js
 - webpack
 
 ## Usage
