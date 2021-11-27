@@ -1,1 +1,0 @@
-(()=>{"use strict";document.addEventListener("selectionchange",(function(){var e=document.getSelection();if(e){var t=e.toString();chrome.storage.local.set({selectionString:t})}}))})();
