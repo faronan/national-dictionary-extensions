@@ -1,7 +1,7 @@
 # National dictionary extensions
 
 ![ci-main](https://github.com/faronan/national-dictionary-extensions/workflows/CI/badge.svg)
-![license](https://img.shields.io/github/license/faronan/national-dictionary-extensions)
+![GitHub](https://img.shields.io/github/license/faronan/national-dictionary-extensions)
 
 選択した単語の意味や解説を辞書で検索し、表示する拡張機能です。
 
